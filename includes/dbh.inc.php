@@ -1,13 +1,13 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$dbusername = "root";
+$dbpassword = "";
 $dbname = "projectleone";
 $tableName = "users";
 
 try {
-    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, [
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_EMULATE_PREPARES => false,
     ]);
