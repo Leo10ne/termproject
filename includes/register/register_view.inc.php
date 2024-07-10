@@ -15,9 +15,8 @@ function check_signup_errors()
     $result = null; // Initialize a variable to hold potential return values
 
     if (isset($_SESSION['errors_signup'])){
-        echo "<br>";
         foreach ($_SESSION['errors_signup'] as $error){
-            echo '<p class="form-error">'.$error.'</p>';
+            echo '<p class="form-error" style="display:none;">'.$error.'</p>';
         }
         $result = $_SESSION['errors_signup']; // Assign errors to result
         unset($_SESSION['errors_signup']); // Clear the errors from the session

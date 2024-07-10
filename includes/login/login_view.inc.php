@@ -19,11 +19,10 @@ function check_login_errors()
     // Check for stored login errors in the session
     if (isset($_SESSION["errors_login"])){
         $errors = $_SESSION["errors_login"];
-        echo "<br>";
 
         // Display each error
         foreach ($errors as $error) {
-            echo "<p class='form-error'>$error</p>";
+            echo "<p class='form-error' style='display:none;'>$error</p>";
         }
 
         // Clear the errors from the session
