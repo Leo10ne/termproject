@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Register user if all validations pass
         register_user($pdo, $email, $password);
         // Redirect to index page with success message and terminate script
-        header("Location: ../index.php?signup=success");
+        header("Location: ../../index.php?signup=success");
         die();
     }
 
@@ -44,11 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($errors) {
         $_SESSION["errors_signup"] = $errors;
         // Redirect back to index page to display errors and terminate script
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
         die();
     }
 } else {
     // Redirect to index page if form was not submitted via POST and terminate script
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
     die();
 }

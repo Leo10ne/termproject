@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["last_regeneration"] = time(); // Update last regeneration time
 
                     // Redirect to index page with success message
-                    header("Location: ../index.php?login=success");
+                    header("Location: ../../index.php?login=success");
                     die();
                 }
             }
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($errors)) {
             // Store errors in session and redirect to index page
             $_SESSION["errors_login"] = $errors;
-            header("Location: ../index.php");
+            header("Location: ../../index.php");
             die();
         }
 
@@ -66,6 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // Redirect to index page if accessed without POST method
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
     die();
 }
