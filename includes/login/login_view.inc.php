@@ -13,6 +13,9 @@ declare(strict_types=1);
  */
 function check_login_errors()
 {
+    // Initialize a variable to hold potential return values
+    $result = null;
+
     // Check for stored login errors in the session
     if (isset($_SESSION["errors_login"])){
         $errors = $_SESSION["errors_login"];
@@ -25,10 +28,24 @@ function check_login_errors()
 
         // Clear the errors from the session
         unset($_SESSION["errors_login"]);
-        return $errors;
+
+        // Assign errors to result
+        $result = $errors;
     }
     // Check for a successful login via query parameter
     else if (isset($_GET["login"]) && $_GET["login"] == "success"){
         echo "<p class='form-success'>Login successful</p>";
+    }
+
+    // Return the result, which will be null if no errors or login success
+    return $result;
+}
+
+function output_email(): void
+{
+    if(isset($_SESSION['user_id'])){
+        echo "You are logged in as ".$_SESSION['email'];
+    } else{
+        echo "You are not logged in";
     }
 }

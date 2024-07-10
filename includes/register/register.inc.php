@@ -6,10 +6,10 @@ global $pdo;
 // Check if the form was submitted via POST method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include necessary files for database connection, model, controller, and session configuration
-    require_once "dbh.inc.php"; // Database connection file
+    require_once "../dbh.inc.php"; // Database connection file
     require_once "register_model.inc.php"; // Model file for registration logic
     require_once "register_contr.inc.php"; // Controller file for registration logic
-    require_once 'config_session.inc.php'; // Session configuration file
+    require_once '../config_session.inc.php'; // Session configuration file
 
     // Retrieve email and password from POST request
     $email = $_POST["email"];
@@ -27,7 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (is_email_taken($pdo, $email)) {
         // Add error message if email is already taken
         $errors["email_taken"] = "Email is already taken";
-    } else {
+    } elseif (!is_password_valid($password)) {
+        // Add error message if password is invalid
+        $errors["invalid_password"] = "Password must be at least 6 characters long and contain a number";
+    }
+
+    else {
         // Register user if all validations pass
         register_user($pdo, $email, $password);
         // Redirect to index page with success message and terminate script

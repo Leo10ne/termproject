@@ -10,21 +10,21 @@ declare(strict_types=1);
  * After displaying errors, it clears them from the session to prevent them from being shown again.
  * If the signup was successful, it displays a success message based on a query parameter.
  */
-function check_signup_errors(): void
+function check_signup_errors()
 {
-    // Check if there are any signup errors stored in the session
+    $result = null; // Initialize a variable to hold potential return values
+
     if (isset($_SESSION['errors_signup'])){
         echo "<br>";
-        // Iterate through each error and display it
         foreach ($_SESSION['errors_signup'] as $error){
             echo '<p class="form-error">'.$error.'</p>';
         }
-        // Clear the errors from the session
-        unset($_SESSION['errors_signup']);
+        $result = $_SESSION['errors_signup']; // Assign errors to result
+        unset($_SESSION['errors_signup']); // Clear the errors from the session
     }
-    // Check if the signup was successful based on a query parameter
     else if (isset($_GET['signup']) && $_GET['signup'] == 'success'){
-        // Display a success message
         echo '<p class="form-success">Signup successful!</p>';
     }
+
+    return $result; // Return the result, which will be null if no errors or signup success
 }

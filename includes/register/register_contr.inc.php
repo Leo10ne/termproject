@@ -42,11 +42,29 @@ function is_email_invalid(string $email): bool
  */
 function is_email_taken(PDO $pdo, string $email): bool
 {
-    if (get_email($pdo, $email)){
+    if (get_email($pdo, $email)) {
         return true;
     } else {
         return false;
     }
+}
+
+/**
+ * Validates the password based on specific criteria.
+ *
+ * This function checks if the password meets the following conditions:
+ * - It must be more than 5 characters long.
+ * - It must contain at least one numeric character.
+ *
+ * @param string $password The password to validate.
+ * @return bool Returns true if the password meets the criteria, false otherwise.
+ */
+function is_password_valid(string $password): bool
+{
+    $lengthCondition = strlen($password) > 5; // Check if password is more than 5 characters
+    $numberCondition = preg_match('/\d/', $password) === 1; // Check if password contains at least one number
+
+    return $lengthCondition && $numberCondition; // Return true if both conditions are met
 }
 
 /**

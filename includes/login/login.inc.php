@@ -11,10 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Include necessary files for database connection and login logic
-        require_once "dbh.inc.php"; // Database connection file
+        require_once "../dbh.inc.php"; // Database connection file
         require_once "login_model.inc.php"; // Model functions for login
         require_once "login_contr.inc.php"; // Controller functions for login
-        require_once 'config_session.inc.php'; // Session configuration settings
+        require_once '../config_session.inc.php'; // Session configuration settings
 
         // Initialize an array to store potential errors
         $errors = [];
