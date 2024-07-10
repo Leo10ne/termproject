@@ -1,6 +1,7 @@
 <?php
-require_once 'includes/register_view.inc.php';
 require_once 'includes/config_session.inc.php';
+require_once 'includes/register_view.inc.php';
+require_once 'includes/login_view.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,19 +20,22 @@ require_once 'includes/config_session.inc.php';
     <h2>Signup Form</h2>
     <form action="includes/register.inc.php" method="post">
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" ><br>
+        <input type="email" id="email" name="email" required><br>
         <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" ><br><br>
+        <input type="password" id="password" name="password" required><br><br>
         <input type="submit" name="signup" value="Signup">
     </form>
 </section>
 <section>
+    <?php
+    check_login_errors();
+    ?>
     <h2>Login Form</h2>
     <form action="includes/login.inc.php" method="post">
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
+        <input type="email" id="email" name="email" ><br>
         <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+        <input type="password" id="password" name="password" ><br><br>
         <input type="submit" name="login" value="Login">
     </form>
 </section>

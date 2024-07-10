@@ -20,7 +20,7 @@ function is_input_empty($email, $password): bool
 function is_email_taken(object $pdo, string $email): bool
 {
 
-    if (get_email($pdo, $email)){
+    if (get_user($pdo, $email)){
         return true;
     } else {
         return false;

@@ -4,7 +4,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "projectleone";
-$tableName = "users"; // Example table name
+$tableName = "users";
 
 try {
     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, [
