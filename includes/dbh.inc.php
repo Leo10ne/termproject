@@ -5,7 +5,6 @@ $servername = "localhost";
 $dbusername = "root";
 $dbpassword = "";
 $dbname = "projectleone";
-$tableName = "users";
 
 try {
     // Create a new PDO connection with the database
@@ -18,15 +17,24 @@ try {
     $pdo->exec("CREATE DATABASE IF NOT EXISTS $dbname");
     // Select the database for use
     $pdo->exec("USE $dbname");
+
     // Ensure the users table exists, or create it if it doesn't
-    $pdo->exec("CREATE TABLE IF NOT EXISTS $tableName (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, -- Unique ID for each user
-        email VARCHAR(50) NOT NULL UNIQUE, -- User's email address, must be unique
-        password VARCHAR(255) NOT NULL, -- User's password, stored securely
-        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Registration date and time
+    $pdo->exec("CREATE TABLE IF NOT EXISTS users (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+        email VARCHAR(50) NOT NULL UNIQUE, 
+        password VARCHAR(255) NOT NULL, 
+        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
     )");
 
-    echo "Database and table checked/created successfully.";
+    // Ensure the url_shortener table exists, or create it if it doesn't
+    $pdo->exec("CREATE TABLE IF NOT EXISTS url_shortener (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        long_url VARCHAR(2048) NOT NULL,
+        short_code VARCHAR(255) NOT NULL UNIQUE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )");
+
+    echo "Database and tables checked/created successfully.";
 } catch (PDOException $e) {
     // Handle any errors during connection or table creation
     die("Could not connect or create the database/table: " . $e->getMessage());

@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["email"] = htmlspecialchars($result["email"]);
                     $_SESSION["last_regeneration"] = time(); // Update last regeneration time
 
-                    // Redirect to index page with success message
-                    header("Location: ../../index.php?login=success");
+                    // Redirect to main page
+                    header("Location: ../../main.php");
                     die();
                 }
             }

@@ -25,7 +25,6 @@ require_once 'includes/login/login_view.inc.php';
                         <div class="title">Log in</div>
                         <?php
                         check_login_errors();
-                        output_email();
                         ?>
                         <form class="flip-card__form" action="includes/login/login.inc.php" method="POST">
                             <input class="flip-card__input" name="email" placeholder="Email" type="email" required>
@@ -33,9 +32,6 @@ require_once 'includes/login/login_view.inc.php';
                                    required>
                             <input class="flip-card__btn" type="submit" name="login" value="Let's go!">
                             <!--                            <button class="flip-card__btn" type="submit">Let`s go!</button>-->
-                        </form>
-                        <form action="includes/logout.inc.php">
-                            <input class="flip-card__btn" type="submit" name="logout" value="Logout">
                         </form>
                     </div>
                     <div class="flip-card__back">

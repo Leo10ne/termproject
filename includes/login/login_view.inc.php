@@ -43,8 +43,8 @@ function check_login_errors()
 function output_email(): void
 {
     if(isset($_SESSION['user_id'])){
-        echo "You are logged in as ".$_SESSION['email'];
+        echo "<i>".$_SESSION['email']."</i>";
     } else{
-        echo "You are not logged in";
+        echo "Guest";
     }
 }

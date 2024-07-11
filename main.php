@@ -1,3 +1,9 @@
+<?php
+require_once "includes/config_session.inc.php";
+require_once "includes/login/login_view.inc.php";
+?>
+
+
 <!DOCTYPE HTML>
 
 <html lang="en">
@@ -29,7 +35,8 @@
 
             <article class="item thumb span-1">
                 <h2>Hybrid Family Van</h2>
-                <a href="images/fulls/09.jpg" class="image"><img loading="lazy" src="images/thumbs/09.jpg" alt="Hybrid Family Van"></a>
+                <a href="images/fulls/09.jpg" class="image"><img loading="lazy" src="images/thumbs/09.jpg"
+                                                                 alt="Hybrid Family Van"></a>
                 <p>Efficient and spacious, the ideal choice for eco-conscious families.</p>
             </article>
 
@@ -42,7 +49,8 @@
 
             <article class="item thumb span-1">
                 <h2>Luxury Coupe</h2>
-                <a href="images/thumbs/11.jpg" class="image"><img loading="lazy" src="images/thumbs/11.jpg" alt="Luxury Coupe"></a>
+                <a href="images/thumbs/11.jpg" class="image"><img loading="lazy" src="images/thumbs/11.jpg"
+                                                                  alt="Luxury Coupe"></a>
                 <p>Sleek design meets powerful performance in this luxury coupe.</p>
             </article>
 
@@ -69,7 +77,8 @@
 
             <article class="item thumb span-2">
                 <h2>Modern City Micro car</h2>
-                <a href="images/fulls/15.jpg" class="image"><img loading="lazy" src="images/thumbs/15.jpg" alt="Modern City Microcar"></a>
+                <a href="images/fulls/15.jpg" class="image"><img loading="lazy" src="images/thumbs/15.jpg"
+                                                                 alt="Modern City Microcar"></a>
                 <p>Ultra-compact and efficient, designed for the urban jungle.</p>
             </article>
 
@@ -86,7 +95,8 @@
 
             <article class="item thumb span-1">
                 <h2>Luxury Sedan</h2>
-                <a href="images/fulls/01.jpg" class="image"><img loading="lazy" src="images/thumbs/01.jpg" alt="Luxury Sedan"></a>
+                <a href="images/fulls/01.jpg" class="image"><img loading="lazy" src="images/thumbs/01.jpg"
+                                                                 alt="Luxury Sedan"></a>
                 <p>Elegant and comfortable, perfect for city driving.</p>
             </article>
 
@@ -120,13 +130,15 @@
 
             <article class="item thumb span-1">
                 <h2>Urban Hatchback</h2>
-                <a href="images/fulls/06.jpg" class="image"><img loading="lazy" src="images/thumbs/06.jpg" alt="Urban Hatchback"></a>
+                <a href="images/fulls/06.jpg" class="image"><img loading="lazy" src="images/thumbs/06.jpg"
+                                                                 alt="Urban Hatchback"></a>
                 <p>City-friendly size with surprising space and agility.</p>
             </article>
 
             <article class="item thumb span-2">
                 <h2>Classic Roadster</h2>
-                <a href="images/fulls/07.jpg" class="image"><img loading="lazy" src="images/thumbs/07.jpg" alt="Classic Roadster"></a>
+                <a href="images/fulls/07.jpg" class="image"><img loading="lazy" src="images/thumbs/07.jpg"
+                                                                 alt="Classic Roadster"></a>
                 <p>A timeless design combined with modern performance.</p>
             </article>
 
@@ -143,9 +155,32 @@
 
     <!-- Footer -->
     <section id="footer">
-         <section>
-            <p>Welcome to <strong>AutoGallery</strong>, your premier car dealership. Browse our extensive collection of vehicles and find your perfect match. Dedicated to providing you with the best service and selection.</p>
+        <section>
+            <p>Welcome to <strong>AutoGallery</strong>,
+                <?php output_email();
+                       ?>
+                your premier car dealership. Browse our extensive collection of
+                vehicles and find your perfect match. Dedicated to providing you with the best service and selection.
+            </p>
         </section>
+        <section>
+            <a href="/enquiryform.php" class="btn-shine">Make an Inquiry</a>
+
+        </section>
+
+        <form action="<?php echo isset($_SESSION['user_id']) ? 'includes/logout.inc.php' : 'index.php'; ?>"
+              method="post">
+            <button class="Btn" type="submit" name="logout">
+                <div class="sign">
+                    <svg viewBox="0 0 512 512">
+                        <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+                    </svg>
+                </div>
+
+                <div class="text"><?php echo isset($_SESSION['user_id']) ? 'Logout' : 'Login'; ?></div>
+            </button>
+
+        </form>
         <section>
             <ul class="icons">
                 <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
