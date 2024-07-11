@@ -25,4 +25,3 @@ if ($long_url) {
     // If no corresponding long URL is found, display an error message.
     echo "URL not found!";
 }
-?>

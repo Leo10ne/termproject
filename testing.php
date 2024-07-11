@@ -15,7 +15,7 @@
  * @param string $url The URL to test for redirection.
  * @return string A message indicating the result of the redirection test.
  */
-function testRedirection($url): string
+function testRedirection(string $url): string
 {
     $ch = curl_init($url); // Initialize a cURL session.
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return the transfer as a string.
@@ -50,7 +50,8 @@ function testRedirection($url): string
  * @param int $httpCode The HTTP status code received.
  * @param string $headers The response headers.
  */
-function logDebugInfo($url, $httpCode, $headers) {
+function logDebugInfo(string $url, int $httpCode, string $headers): void
+{
     $logMessage = sprintf("[%s] Testing URL: %s, HTTP Code: %s, Headers: %s\n", date('Y-m-d H:i:s'), $url, $httpCode, $headers);
     file_put_contents('debug_log.txt', $logMessage, FILE_APPEND); // Append the log message to the file.
 }
@@ -59,4 +60,3 @@ function logDebugInfo($url, $httpCode, $headers) {
 echo testRedirection("http://localhost:63342/main.php") . PHP_EOL;
 echo testRedirection("http://localhost:63342/index.php") . PHP_EOL;
 echo testRedirection("http://localhost/test") . PHP_EOL;
-?>
