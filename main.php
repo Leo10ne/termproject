@@ -164,7 +164,7 @@ require_once "includes/login/login_view.inc.php";
             </p>
         </section>
         <section>
-            <a href="/enquiryform.php" class="btn-shine">Make an Inquiry</a>
+            <a href="enquiryform.php" class="btn-shine">Make an Inquiry</a>
 
         </section>
 

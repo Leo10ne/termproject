@@ -159,3 +159,23 @@ body {
     justify-content: center;
 }
 
+.main-link-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.main-link {
+  color: #fff;
+  text-decoration: none;
+  background-color: #313131;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #414141;
+}
+
+.main-link:hover {
+  background-color: #fff;
+  color: #313131;
+  border-color: #fff;
+}

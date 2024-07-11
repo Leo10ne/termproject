@@ -48,16 +48,34 @@
             <div id="form-submit-btn-container">
                 <button type="submit" class="form-submit-btn" id="submitBtn" disabled>Submit</button>
             </div>
+            <div class="main-link-container">
+                <a href="main.php" class="main-link">Go to Main Page</a>
+            </div>
         </form>
     </section>
 </div>
 
 <script>
+    /**
+     * Toggles the form state based on the selection of the radio button.
+     *
+     * This function is designed to enable or disable form inputs and the submit button
+     * based on the user's selection of what they intend to do (buy or sell a car).
+     * It is triggered by clicking on the radio buttons for buying or selling a car.
+     *
+     * @param {boolean} isFirstRadioSelected - A boolean value indicating whether the first radio button (buy a car) is selected.
+     * If `true`, the form elements are disabled, otherwise they are enabled.
+     */
     function toggleFormState(isFirstRadioSelected) {
+        // Disable or enable the car type selection dropdown
         document.getElementById("carType").disabled = isFirstRadioSelected;
+        // Disable or enable the input field for the user's name
         document.getElementById("name").disabled = isFirstRadioSelected;
+        // Disable or enable the textarea for the enquiry
         document.getElementById("enquiryText").disabled = isFirstRadioSelected;
+        // Disable or enable the checkbox for agreeing to terms and conditions
         document.getElementById("termsCheckbox").disabled = isFirstRadioSelected;
+        // Disable or enable the submit button
         document.getElementById("submitBtn").disabled = isFirstRadioSelected;
     }
 </script>
