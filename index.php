@@ -2,6 +2,13 @@
 require_once 'includes/config_session.inc.php';
 require_once 'includes/register/register_view.inc.php';
 require_once 'includes/login/login_view.inc.php';
+
+// Check if the user is already logged in
+if (isset($_SESSION['user_id'])) {
+    // Redirect to the main page if the user is already logged in
+    header('Location: main.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

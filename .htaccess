@@ -1,0 +1,7 @@
+RewriteEngine On
+# Check if the requested filename is not a file
+RewriteCond %{REQUEST_FILENAME} !-f
+# Check if the requested filename is not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+# Redirect requests from /s/shortCode to redirect.php?code=shortCode
+RewriteRule ^s/([a-zA-Z0-9]+)$ redirect.inc.php?code=$1 [QSA,L]

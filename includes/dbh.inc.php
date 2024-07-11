@@ -30,7 +30,7 @@ try {
     $pdo->exec("CREATE TABLE IF NOT EXISTS url_shortener (
         id INT AUTO_INCREMENT PRIMARY KEY,
         long_url VARCHAR(2048) NOT NULL,
-        short_code VARCHAR(255) NOT NULL UNIQUE,
+        short_url VARCHAR(255) NOT NULL UNIQUE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )");
 

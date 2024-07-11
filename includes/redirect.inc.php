@@ -6,7 +6,7 @@ require_once 'dbh.inc.php';
 $shortCode = $_GET['code'];
 
 // Retrieve the long URL from the database
-$stmt = $pdo->prepare("SELECT long_url FROM url_shortener WHERE short_code = ?");
+$stmt = $pdo->prepare("SELECT long_url FROM url_shortener WHERE short_url = ?");
 $stmt->execute([$shortCode]);
 $urlRow = $stmt->fetch();
 
