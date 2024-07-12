@@ -1,33 +1,30 @@
 <?php
 global $pdo;
-require_once __DIR__.'/../includes/dbh.inc.php'; // Database connection
-require_once __DIR__.'/../includes/config_session.inc.php'; // Session configuration
+require_once 'dbh.inc.php'; // Assuming dbh.inc.php is the correct file for database connection setup.
 
-// Check if a user is logged in and if they are an admin
-if (isset($_SESSION['user_id'])) {
-    if ($_SESSION['email'] == 'admin@email.com') {
-        // Process form submission
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['long_url'], $_POST['short_url'])) {
-            $longUrl = trim($_POST['long_url']); // Sanitize the long URL input
-            $shortCode = trim($_POST['short_url']); // Sanitize the short URL code input
-
-            // Prepare and execute the SQL statement to insert the new URL mapping
-            $stmt = $pdo->prepare("INSERT INTO url_shortener (long_url, short_url) VALUES (?, ?)");
-            if ($stmt->execute([$longUrl, $shortCode])) {
-                // Success: Display the newly created short URL
-                echo "Short URL created: " . "https://localhost/termproject/" . $shortCode;
-            } else {
-                // Failure: Inform the user of a database operation error
-                echo "An error occurred during the database operation.";
-            }
-        }
-    } else {
-        // Redirect non-admin users to the index page
-        header('Location: index.php');
-        exit();
-    }
-} else {
-    // Redirect unauthenticated users to the login page
-    header('Location: login.php');
-    exit();
+function generateShortCode($length = 6): string
+{
+    return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $long_url = $_POST['long_url'];
+
+    // Generate a unique short code
+    $short_code = '';
+    do {
+        $short_code = generateShortCode();
+        $stmt = $pdo->prepare("SELECT id FROM url_shortener WHERE short_url = ?");
+        $stmt->execute([$short_code]);
+        $result = $stmt->fetch();
+    } while ($result);
+
+    // Insert the long URL and short code into the database
+    $stmt = $pdo->prepare("INSERT INTO url_shortener (long_url, short_url) VALUES (?, ?)");
+    $stmt->execute([$long_url, $short_code]);
+
+    // Display the shortened URL
+    $baseurl = rtrim($_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']), '/') . '/';
+    echo "Short URL: <a href=\"http://{$baseurl}redirect.inc.php?code={$short_code}\">http://{$baseurl}redirect.inc.php?code={$short_code}</a>";
+}
+?>

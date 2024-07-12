@@ -28,10 +28,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] !== "admin@email.com") {
             <div class="form-group">
                 <input type="url" name="long_url" required placeholder="Enter Long URL">
             </div>
-            <!-- Input for the desired short URL -->
-            <div class="form-group">
-                <input type="text" name="short_url" required placeholder="Enter Short URL">
-            </div>
             <!-- Submit button for the form -->
             <div id="form-submit-btn-container">
                 <button type="submit" class="form-submit-btn">Shorten URL</button>
