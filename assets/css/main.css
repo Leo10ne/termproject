@@ -819,7 +819,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 
 		}
 .btn-shine {
-  position: absolute;
+  /*position: absolute;*/
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

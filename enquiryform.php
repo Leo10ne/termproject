@@ -63,20 +63,20 @@
      * based on the user's selection of what they intend to do (buy or sell a car).
      * It is triggered by clicking on the radio buttons for buying or selling a car.
      *
-     * @param {boolean} isFirstRadioSelected - A boolean value indicating whether the first radio button (buy a car) is selected.
+     * @param {boolean} isSecondRadioSelected - A boolean value indicating whether the second radio button (sell a car) is selected.
      * If `true`, the form elements are disabled, otherwise they are enabled.
      */
-    function toggleFormState(isFirstRadioSelected) {
+    function toggleFormState(isSecondRadioSelected) {
         // Disable or enable the car type selection dropdown
-        document.getElementById("carType").disabled = isFirstRadioSelected;
+        document.getElementById("carType").disabled = isSecondRadioSelected;
         // Disable or enable the input field for the user's name
-        document.getElementById("name").disabled = isFirstRadioSelected;
+        document.getElementById("name").disabled = isSecondRadioSelected;
         // Disable or enable the textarea for the enquiry
-        document.getElementById("enquiryText").disabled = isFirstRadioSelected;
+        document.getElementById("enquiryText").disabled = isSecondRadioSelected;
         // Disable or enable the checkbox for agreeing to terms and conditions
-        document.getElementById("termsCheckbox").disabled = isFirstRadioSelected;
+        document.getElementById("termsCheckbox").disabled = isSecondRadioSelected;
         // Disable or enable the submit button
-        document.getElementById("submitBtn").disabled = isFirstRadioSelected;
+        document.getElementById("submitBtn").disabled = isSecondRadioSelected;
     }
 </script>
 </body>

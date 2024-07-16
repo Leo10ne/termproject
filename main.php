@@ -165,6 +165,8 @@ require_once "includes/login/login_view.inc.php";
         </section>
         <section>
             <a href="enquiryform.php" class="btn-shine">Make an Inquiry</a>
+        </section>
+         <section>
             <a href="urlshortener.php" class="btn-shine">Shorten Urls</a>
 
         </section>
